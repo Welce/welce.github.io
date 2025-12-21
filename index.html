@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #1e1e1e; /* VS Code 背景色 */
-            --text-color: #d4d4d4; /* 普通文字颜色 */
-            --highlight-color: #4ec9b0; /* 关键字青色 */
-            --string-color: #ce9178; /* 字符串橙色 */
-            --comment-color: #6a9955; /* 注释绿色 */
-            --wish-color: #fbfae4; /* 祝福语淡黄色 */
-            --accent-color: #569cd6; /* 蓝色 */
+            --bg-color: #1e1e1e;
+            /* VS Code 背景色 */
+            --text-color: #d4d4d4;
+            /* 普通文字颜色 */
+            --highlight-color: #4ec9b0;
+            /* 关键字青色 */
+            --string-color: #ce9178;
+            /* 字符串橙色 */
+            --comment-color: #6a9955;
+            /* 注释绿色 */
+            --wish-color: #fbfae4;
+            /* 祝福语淡黄色 */
+            --accent-color: #569cd6;
+            /* 蓝色 */
             --cursor-color: #fff;
         }
 
@@ -42,7 +50,7 @@
             max-width: 800px;
             background: #252526;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border: 1px solid #333;
             overflow: hidden;
             opacity: 0;
@@ -57,16 +65,30 @@
             align-items: center;
             border-bottom: 1px solid #1e1e1e;
         }
-        
+
         .dots {
             display: flex;
             gap: 6px;
             margin-right: 15px;
         }
-        .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .red { background: #ff5f56; }
-        .yellow { background: #ffbd2e; }
-        .green { background: #27c93f; }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .red {
+            background: #ff5f56;
+        }
+
+        .yellow {
+            background: #ffbd2e;
+        }
+
+        .green {
+            background: #27c93f;
+        }
 
         .filename {
             font-size: 0.9em;
@@ -76,7 +98,8 @@
         /* 主要内容区域 */
         .editor-content {
             padding: 30px;
-            min-height: 400px; /* 保证高度 */
+            min-height: 400px;
+            /* 保证高度 */
             position: relative;
         }
 
@@ -92,17 +115,37 @@
         }
 
         p {
-            margin-bottom: 1.5em; /* 段落间距 */
-            white-space: pre-wrap; /* 保留换行 */
+            margin-bottom: 1.5em;
+            /* 段落间距 */
+            white-space: pre-wrap;
+            /* 保留换行 */
         }
 
         /* 特殊高亮样式 */
-        .highlight { color: var(--highlight-color); font-weight: bold; }
-        .string { color: var(--string-color); }
-        .keyword { color: var(--accent-color); }
-        .error { color: #f48771; border-bottom: 1px wavy #f48771; } /* 搞砸了的样式 */
-        .wish { color: var(--wish-color); font-weight: bold; }
-        
+        .highlight {
+            color: var(--highlight-color);
+            font-weight: bold;
+        }
+
+        .string {
+            color: var(--string-color);
+        }
+
+        .keyword {
+            color: var(--accent-color);
+        }
+
+        .error {
+            color: #f48771;
+            border-bottom: 1px wavy #f48771;
+        }
+
+        /* 搞砸了的样式 */
+        .wish {
+            color: var(--wish-color);
+            font-weight: bold;
+        }
+
         /* 最后的Slogan样式 */
         .hero-text {
             margin-top: 40px;
@@ -119,22 +162,40 @@
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
 
         @keyframes fadeIn {
-            to { opacity: 1; }
+            to {
+                opacity: 1;
+            }
         }
 
         /* 移动端适配 */
         @media (max-width: 600px) {
-            .editor-content { padding: 20px; }
-            body { padding: 10px; }
-            .filename { font-size: 0.8em; }
+            .editor-content {
+                padding: 20px;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            .filename {
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- 
         嘿，祝查看源代码的你
@@ -162,38 +223,38 @@
         const contentQueue = [
             { text: "大佬，20岁大寿快乐！🎉\n\n", delay: 50 },
             { text: "期末项目展示的荧幕，是localhost频频亮相的舞台。\n", delay: 30 },
-            { text: "我想给独一无二的" }, 
+            { text: "我想给独一无二的" },
             { text: "黎", delay: 50, class: 'wish' },
             { text: "，送一个与众不同的皮肤。\n\n", delay: 30 },
-            
+
             { text: "但，我似乎搞砸了……\n\n", delay: 100, class: 'error' }, // 这里的延迟会更长，制造悬念
-            
+
             { text: "根据ICANN规定，新注册域名60天内不可转出。\n", delay: 30 },
             { text: "我尝试转出的时候才发现😓\n\n", delay: 30 },
-            
+
             { text: "所以，它暂时还得寄养在我的名下。但这并不影响它因你而生，为你所用。\n\n", delay: 30 },
-            
+
             { text: "你就当我是一个", delay: 30 },
             { text: "管家", delay: 100, class: 'highlight' },
             { text: "吧。基础的Web服务器搭建，SSL证书、DNS和CDN配置……如果你还没学到这些，我可以手把手教你，以你的天资，估计一下午便能举一反三。\n\n", delay: 20 },
-            
-            { text: "当然，也可以提供", delay: 30 },
+
+            { text: "当然，我也可以提供", delay: 30 },
             { text: "一条龙服务", delay: 50, class: 'highlight' },
             { text: "——你只管写代码，部署上线交给我。\n\n", delay: 20 },
-          
+
             { text: "或者，如果你想自己动手折腾，可以找我要手机验证码，并随时召唤我入场支援~\n\n", delay: 20 },
-            
+
             { text: "总之，等你项目写好了，我帮你一起部署上线，如果你需要的话。\n\n", delay: 30 },
 
             // 嘿，如你所见，我前端真的不太行，但是配服务器、域名这种杂活儿，找我就对了~
-            
+
             { text: "愿瞬息万变的世界，可以安放你的热爱与奇思妙想；\n", delay: 40, class: 'wish' },
             { text: "愿你的未来无限可能，除了惊喜，皆由你定义和主宰！\n", delay: 40, class: 'wish' }
         ];
 
         const textArea = document.getElementById('text-area');
         const contentDiv = document.getElementById('content');
-        
+
         // 最后的 Slogan 单独处理
         const footerHTML = `<div class="hero-text">> Hello World. Hello 20. <span style="animation:blink 1s infinite">_</span></div>`;
 
@@ -204,7 +265,7 @@
             if (queueIndex < contentQueue.length) {
                 const currentItem = contentQueue[queueIndex];
                 const currentText = currentItem.text;
-                
+
                 // 如果是该段落的第一个字，创建一个 span 容器
                 if (charIndex === 0) {
                     const span = document.createElement('span');
@@ -216,7 +277,7 @@
 
                 // 获取当前正在写入的 span
                 const currentSpan = textArea.lastChild;
-                
+
                 // 处理换行符
                 const char = currentText.charAt(charIndex);
                 if (char === "\n") {
@@ -232,15 +293,15 @@
                     queueIndex++;
                     charIndex = 0;
                     // 段落之间的停顿，如果是"搞砸了"这种，停顿久一点
-                    let pauseTime = currentItem.class === 'error' ? 800 : 100; 
+                    let pauseTime = currentItem.class === 'error' ? 800 : 100;
                     if (queueIndex === contentQueue.length) pauseTime = 500; // 最后一段写完前的停顿
-                    
+
                     setTimeout(typeWriter, pauseTime);
                 } else {
                     // 打字速度
                     setTimeout(typeWriter, currentItem.delay);
                 }
-                
+
                 // 自动滚动到底部
                 window.scrollTo(0, document.body.scrollHeight);
             } else {
@@ -249,12 +310,12 @@
                 const footerDiv = document.createElement('div');
                 footerDiv.innerHTML = footerHTML;
                 contentDiv.appendChild(footerDiv);
-                
+
                 // 稍微延迟一下让Slogan淡入
                 setTimeout(() => {
                     document.querySelector('.hero-text').classList.add('show-hero');
                 }, 100);
-                
+
                 window.scrollTo(0, document.body.scrollHeight);
             }
         }
@@ -266,4 +327,5 @@
 
     </script>
 </body>
+
 </html>
