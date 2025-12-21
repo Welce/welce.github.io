@@ -9,20 +9,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #1e1e1e;
-            /* VS Code 背景色 */
-            --text-color: #d4d4d4;
-            /* 普通文字颜色 */
-            --highlight-color: #4ec9b0;
-            /* 关键字青色 */
-            --string-color: #ce9178;
-            /* 字符串橙色 */
-            --comment-color: #6a9955;
-            /* 注释绿色 */
-            --wish-color: #fbfae4;
-            /* 祝福语淡黄色 */
-            --accent-color: #569cd6;
-            /* 蓝色 */
+            --bg-color: #1e1e1e;    /* VS Code 背景色 */
+            --text-color: #d4d4d4;    /* 普通文字颜色 */
+            --highlight-color: #4ec9b0;    /* 关键字青色 */
+            --string-color: #ce9178;    /* 字符串橙色 */
+            --comment-color: #6a9955;    /* 注释绿色 */
+            --wish-color: #fbfae4;    /* 祝福语淡黄色 */
+            --accent-color: #569cd6;    /* 蓝色 */
+            --sign-color: #ababab;    /* 署名灰色 */
             --cursor-color: #fff;
         }
 
@@ -135,15 +129,20 @@
             color: var(--accent-color);
         }
 
+        /* 搞砸了的样式 */
         .error {
             color: #f48771;
             border-bottom: 1px wavy #f48771;
         }
 
-        /* 搞砸了的样式 */
         .wish {
             color: var(--wish-color);
             font-weight: bold;
+        }
+
+        .sign {
+            color: var(--sige-color);
+            font-size: 0.75 rem;
         }
 
         /* 最后的Slogan样式 */
@@ -249,7 +248,9 @@
             // 嘿，如你所见，我前端真的不太行，但是配服务器、域名这种杂活儿，找我就对了~
 
             { text: "愿瞬息万变的世界，可以安放你的热爱与奇思妙想；\n", delay: 40, class: 'wish' },
-            { text: "愿你的未来无限可能，除了惊喜，皆由你定义和主宰！\n", delay: 40, class: 'wish' }
+            { text: "愿你的未来无限可能，除了惊喜，皆由你定义和主宰！\n", delay: 40, class: 'wish' },
+
+            { text: "Love from mhmhmhzzz.\n", delay: 40, class: 'sign'}
         ];
 
         const textArea = document.getElementById('text-area');
@@ -327,5 +328,5 @@
 
     </script>
 </body>
-
+<!-- Love from mhmhmhzzz -->
 </html>
