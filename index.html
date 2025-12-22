@@ -262,6 +262,14 @@
         let queueIndex = 0;
         let charIndex = 0;
 
+        function scrollToButtom() {
+            const distanceToBottom = document.body.scrollHeight - (window.innerHeight + window.scrollY);
+            // 只有当处在底部附近时才自动滚动，这样向上滚动查看历史消息时不会被强制拉回底部
+            if (distanceToBottom < 50) {
+                window.scrollTo(0, document.body.scrollHeight);
+            }
+        }
+
         function typeWriter() {
             if (queueIndex < contentQueue.length) {
                 const currentItem = contentQueue[queueIndex];
@@ -303,8 +311,7 @@
                     setTimeout(typeWriter, currentItem.delay);
                 }
 
-                // 自动滚动到底部
-                window.scrollTo(0, document.body.scrollHeight);
+                scrollToButtom();
             } else {
                 // 全部打完，显示最后的 Slogan
                 document.querySelector('.cursor').style.display = 'none'; // 隐藏正文光标
@@ -317,7 +324,7 @@
                     document.querySelector('.hero-text').classList.add('show-hero');
                 }, 100);
 
-                window.scrollTo(0, document.body.scrollHeight);
+                scrollToButtom();
             }
         }
 
