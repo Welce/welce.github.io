@@ -265,7 +265,7 @@
         function scrollToBottom() {
             const distanceToBottom = document.body.scrollHeight - (window.innerHeight + window.scrollY);
             // 只有当处在底部附近时才自动滚动，这样向上滚动查看历史消息时不会被强制拉回底部
-            if (distanceToBottom < 5) {
+            if (distanceToBottom < 50) {
                 window.scrollTo(0, document.body.scrollHeight);
             }
         }
