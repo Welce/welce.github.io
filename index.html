@@ -291,6 +291,7 @@
                 const char = currentText.charAt(charIndex);
                 if (char === "\n") {
                     currentSpan.appendChild(document.createElement('br'));
+                    scrollToBottom();
                 } else {
                     currentSpan.appendChild(document.createTextNode(char));
                 }
@@ -310,8 +311,6 @@
                     // 打字速度
                     setTimeout(typeWriter, currentItem.delay);
                 }
-
-                scrollToBottom();
             } else {
                 // 全部打完，显示最后的 Slogan
                 document.querySelector('.cursor').style.display = 'none'; // 隐藏正文光标
