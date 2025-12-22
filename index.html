@@ -250,7 +250,7 @@
             { text: "愿瞬息万变的世界，可以安放你的热爱与奇思妙想；\n", delay: 40, class: 'wish' },
             { text: "愿你的未来无限可能，除了惊喜，皆由你定义和主宰！\n\n", delay: 40, class: 'wish' },
 
-            { text: "Last modified at 12.22 11:37 by mhmhmhzzz.\n", delay: 40, class: 'sign'}
+            { text: "Last modified at 12.22 11:44 by mhmhmhzzz.\n", delay: 40, class: 'sign'}
         ];
 
         const textArea = document.getElementById('text-area');
@@ -277,7 +277,7 @@
             if (isTouching) return;
             const distanceToBottom = document.body.scrollHeight - (window.innerHeight + window.scrollY);
             // 只有当处在底部附近时才自动滚动，这样向上滚动查看历史消息时不会被强制拉回底部
-            if (distanceToBottom < 50) {
+            if (distanceToBottom < 100) {
                 window.scrollTo(0, document.body.scrollHeight);
             }
         }
@@ -302,8 +302,8 @@
                 // 处理换行符
                 const char = currentText.charAt(charIndex);
                 if (char === "\n") {
-                    currentSpan.appendChild(document.createElement('br'));
                     scrollToBottom();
+                    currentSpan.appendChild(document.createElement('br'));
                 } else {
                     currentSpan.appendChild(document.createTextNode(char));
                 }
